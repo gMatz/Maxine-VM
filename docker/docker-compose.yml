@@ -13,13 +13,6 @@ services:
     ports:
       - "9873:873"
     volumes:
-      - maxine-dev-mx-sync:/root/.mx:nocopy # nocopy is important
-      - maxine-dev-src-sync:/root/maxine-src:nocopy # nocopy is important
+      - ~/.mx:/root/.mx # nocopy is important
+      - $MAXINE_SRC:/root/maxine-src # nocopy is important
       - /tmp/.X11-unix:/tmp/.X11-unix
-
-# that the important thing
-volumes:
-  maxine-dev-mx-sync:
-    external: true
-  maxine-dev-src-sync:
-    external: true
