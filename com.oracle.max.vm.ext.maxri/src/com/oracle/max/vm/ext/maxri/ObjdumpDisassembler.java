@@ -156,7 +156,7 @@ public class ObjdumpDisassembler {
         final String[] cmdline;
         final Platform platform = Platform.platform();
         if (platform.isa == ISA.AMD64) {
-            cmdline = new String[]{"objdump", "-D", "-b", "binary", "-M", "x86-64", "-m", "i386", binaryFile.getAbsolutePath()};
+            cmdline = new String[]{"objdump", "-D", "-b", "binary", "-M", "amd64", "-m", "i386", binaryFile.getAbsolutePath()};
         } else if (platform.isa == ISA.ARM) {
             cmdline = new String[]{"arm-none-eabi-objdump", "-D", "-b", "binary", "-m", "arm", binaryFile.getAbsolutePath()};
         } else if (platform.isa == ISA.Aarch64) {
@@ -187,7 +187,7 @@ public class ObjdumpDisassembler {
                         }
                     }
                     line = m.replaceFirst("0x" + Long.toHexString(address + startAddress) + "$2");
-                    sb.append(line).append("\n");
+                    sb.append(lineReformatParser(line,startAddress)).append("\n");
                 }
             }
         }
@@ -206,6 +206,10 @@ public class ObjdumpDisassembler {
             }
         }
         return sb.toString();
+    }
+
+    private static String lineReformatParser(String line, long offsetFromStart){
+        return line;//"NOT YET!! lineReformatParser"+line ;
     }
 
     /**
