@@ -175,6 +175,7 @@ public class ObjdumpDisassembler {
         InputStreamReader isr = new InputStreamReader(is);
         try (BufferedReader br = new BufferedReader(isr)) {
             String line;
+            ObjdumpLineParser lineParser= ObjdumpLineParser.createParser();
             while ((line = br.readLine()) != null) {
                 Matcher m = hexAddressPattern.matcher(line);
                 if (m.find()) {
@@ -187,7 +188,7 @@ public class ObjdumpDisassembler {
                         }
                     }
                     line = m.replaceFirst("0x" + Long.toHexString(address + startAddress) + "$2");
-                    sb.append(lineReformatParser(line,startAddress)).append("\n");
+                    sb.append(lineParser.parseLine(line, startAddress)).append("\n");
                 }
             }
         }
@@ -208,10 +209,7 @@ public class ObjdumpDisassembler {
         return sb.toString();
     }
 
-    private static String lineReformatParser(String line, long offsetFromStart){
-        return line;//"NOT YET!! lineReformatParser"+line ;
-    }
-
+    
     /**
      * Pattern for a single shell command argument that does not need to quoted.
      */
