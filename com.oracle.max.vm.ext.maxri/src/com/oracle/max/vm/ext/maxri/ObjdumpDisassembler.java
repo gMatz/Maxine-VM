@@ -188,7 +188,7 @@ public class ObjdumpDisassembler {
                         }
                     }
                     line = m.replaceFirst("0x" + Long.toHexString(address + startAddress) + "$2");
-                    sb.append(lineParser.parseLine(line, startAddress)).append("\n");
+                    sb.append(lineParser.parseLine(line, address, startAddress)).append("\n");
                 }
             }
         }

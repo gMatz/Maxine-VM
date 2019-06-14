@@ -8,8 +8,8 @@ public class RISCV64LineParser extends ObjdumpLineParser{
 
     }
 
-    public String parseLine(String line, long offsetFromStartOfcode){
-        return line;//WORK IN PROGRESS
+    public String parseLine(String line, long offsetFromStartOfcode, long codeStartAdress){
+        return line;//UNIMPLEMENTED
     }
 
 }

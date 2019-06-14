@@ -33,6 +33,6 @@ public abstract class ObjdumpLineParser {
      * @param line the instruction line from objdump
      * @param offsetFromStartOfcode the offset from the start of code
      */
-    public abstract String parseLine(String line, long offsetFromStartOfcode);
+    public abstract String parseLine(String line, long offsetFromStartOfcode, long codeStartAdress);
 
 }
